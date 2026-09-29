@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Project 2 - Automation Exercise E-Commerce | Dineo Sephaka</title>
+<style>
+body{font-family:Segoe UI,Arial,sans-serif;margin:0;background:#f4f6f8;color:#17212b;line-height:1.6}
+main{max-width:1100px;margin:auto;padding:28px}
+.hero{background:#17212b;color:#fff;border-radius:20px;padding:42px;margin-bottom:22px}
+h1{font-size:38px;margin:0 0 8px} h2{margin-top:0}
+section,.metric{background:#fff;border:1px solid #e1e7ed;border-radius:16px;padding:24px;margin:18px 0}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.metric{text-align:center;margin:0}.num{font-size:30px;font-weight:800}.muted{color:#667384}
+.badge,.pass{color:#15803d;font-weight:800}.badge{background:#dcfce7;padding:6px 12px;border-radius:20px;display:inline-block}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:11px;border-bottom:1px solid #e5e7eb}th{background:#f8fafc}
+pre{background:#101827;color:#e5e7eb;padding:18px;border-radius:10px;overflow:auto}
+.flow{display:flex;flex-wrap:wrap;gap:8px}.step{background:#eff6ff;border:1px solid #bfdbfe;padding:8px 11px;border-radius:10px}
+.note{border-left:4px solid #2563eb;background:#f8fafc;padding:12px 15px}
+footer{text-align:center;color:#667384;padding:20px}
+@media(max-width:700px){.metrics{grid-template-columns:repeat(2,1fr)}h1{font-size:30px}}
+@media print{body{background:#fff}section,.metric{break-inside:avoid}}
+</style>
+</head>
+<body><main>
+<header class="hero">
+<h1>Project 2 — Automation Exercise E-Commerce</h1>
+<p><strong>Prepared by:</strong> Dineo Sephaka</p>
+<p>Java • Selenium WebDriver • TestNG • Maven • Page Object Model</p>
+<span class="badge">PASS — Chrome &amp; Edge</span>
+</header>
+
+<div class="metrics">
+<div class="metric"><div class="num">2</div><div class="muted">Browsers Executed</div></div>
+<div class="metric"><div class="num">2</div><div class="muted">Successful E2E Runs</div></div>
+<div class="metric"><div class="num">0</div><div class="muted">Failures</div></div>
+<div class="metric"><div class="num">0</div><div class="muted">Errors</div></div>
+</div>
+
+<section><h2>1. Project Overview</h2>
+<p>This project automates an end-to-end e-commerce customer journey on the Automation Exercise website using Java, Selenium WebDriver, TestNG and the Page Object Model (POM). The workflow validates registration, login, product search, product verification, shopping cart management, checkout, order confirmation and account deletion.</p>
+<p class="note">The primary evidence is the validated continuous end-to-end workflow, successfully executed in both Google Chrome and Microsoft Edge.</p>
+</section>
+
+<section><h2>2. Test Environment</h2>
+<table>
+<tr><th>Component</th><th>Version / Details</th></tr>
+<tr><td>Operating System</td><td>Windows 11</td></tr>
+<tr><td>Programming Language</td><td>Java 21.0.12</td></tr>
+<tr><td>Automation Tool</td><td>Selenium WebDriver 4.35.0</td></tr>
+<tr><td>Test Framework</td><td>TestNG</td></tr>
+<tr><td>Build Tool</td><td>Maven 3.9.16</td></tr>
+<tr><td>IDE</td><td>Visual Studio Code</td></tr>
+<tr><td>Browsers</td><td>Google Chrome and Microsoft Edge</td></tr>
+<tr><td>Design Pattern</td><td>Page Object Model</td></tr>
+<tr><td>Application Under Test</td><td>Automation Exercise E-Commerce</td></tr>
+</table></section>
+
+<section><h2>3. Test Execution Summary</h2>
+<table>
+<tr><th>Execution</th><th>Tests</th><th>Failures</th><th>Errors</th><th>Duration</th><th>Status</th></tr>
+<tr><td>Chrome — EndToEndTest</td><td>1</td><td>0</td><td>0</td><td>132.8 sec</td><td class="pass">PASS</td></tr>
+<tr><td>Edge — EdgeEndToEndTest</td><td>1</td><td>0</td><td>0</td><td>115.1 sec</td><td class="pass">PASS</td></tr>
+</table>
+<p><strong>Result:</strong> Both complete end-to-end executions finished with zero failures and zero errors.</p>
+</section>
+
+<section><h2>4. Test Scenarios</h2>
+<table>
+<tr><th>Scenario</th><th>Coverage</th><th>Status</th></tr>
+<tr><td>1. Register Customer</td><td>Create a unique account, enter personal and address details, create the account and verify creation.</td><td class="pass">PASS</td></tr>
+<tr><td>2. Login</td><td>Validate successful login and the error message for invalid credentials.</td><td class="pass">PASS</td></tr>
+<tr><td>3. Product Search</td><td>Search for Blue Top, open the product and verify product name and price.</td><td class="pass">PASS</td></tr>
+<tr><td>4. Shopping Cart</td><td>Add three products, verify their presence, remove one and verify the remaining cart contents.</td><td class="pass">PASS</td></tr>
+<tr><td>5. Checkout</td><td>Verify delivery/billing addresses and order details, enter payment information and confirm the order.</td><td class="pass">PASS</td></tr>
+<tr><td>6. Delete Account</td><td>Delete the test account, verify deletion and confirm return to the home page.</td><td class="pass">PASS</td></tr>
+</table></section>
+
+<section><h2>5. End-to-End Workflow</h2>
+<div class="flow">
+<span class="step">Register</span><span>→</span><span class="step">Verify Account</span><span>→</span><span class="step">Valid Login</span><span>→</span><span class="step">Invalid Login</span><span>→</span><span class="step">Login Again</span><span>→</span><span class="step">Search Product</span><span>→</span><span class="step">Add Products</span><span>→</span><span class="step">Verify Cart</span><span>→</span><span class="step">Remove Product</span><span>→</span><span class="step">Checkout</span><span>→</span><span class="step">Order Confirmed</span><span>→</span><span class="step">Delete Account</span><span>→</span><span class="step">Return Home</span>
+</div></section>
+
+<section><h2>6. Products Covered</h2>
+<table>
+<tr><th>Product</th><th>Purpose</th></tr>
+<tr><td>Blue Top</td><td>Product search, detail verification and cart validation.</td></tr>
+<tr><td>Men Tshirt</td><td>Cart addition and removal validation.</td></tr>
+<tr><td>Long Maxi Tulle Fancy Dress Up Outfits -Pink</td><td>Cart addition and remaining-item validation after removal.</td></tr>
+</table></section>
+
+<section><h2>7. Automation Framework</h2>
+<pre>Dineo-AutomationExercise-ECommerce
+├── src/test/java/com/dineo/automation
+│   ├── base
+│   │   └── BasePage.java
+│   ├── pages
+│   │   ├── HomePage.java
+│   │   ├── LoginPage.java
+│   │   ├── SignupPage.java
+│   │   ├── ProductsPage.java
+│   │   ├── ProductDetailsPage.java
+│   │   ├── CartPage.java
+│   │   ├── CheckoutPage.java
+│   │   └── AccountPage.java
+│   ├── tests
+│   │   ├── BaseTest.java
+│   │   ├── RegisterTest.java
+│   │   ├── LoginTest.java
+│   │   ├── ProductTest.java
+│   │   ├── CartTest.java
+│   │   ├── CheckoutTest.java
+│   │   ├── EndToEndTest.java
+│   │   └── EdgeEndToEndTest.java
+│   └── utils
+│       ├── DriverFactory.java
+│       ├── ScreenshotUtil.java
+│       └── TestData.java
+└── pom.xml</pre></section>
+
+<section><h2>8. Key Automation Features</h2>
+<ul>
+<li><strong>Page Object Model:</strong> Separates page locators and actions from test logic.</li>
+<li><strong>Reusable driver setup:</strong> DriverFactory supports Chrome, Edge and Firefox.</li>
+<li><strong>Unique test data:</strong> Timestamp-based email generation prevents registration conflicts.</li>
+<li><strong>Reusable actions:</strong> Login, logout, product search, cart operations and account deletion are encapsulated in page objects.</li>
+<li><strong>Explicit waits:</strong> Used for dynamic page elements and cart updates.</li>
+<li><strong>Failure screenshots:</strong> BaseTest captures a screenshot when a test fails.</li>
+<li><strong>Cross-browser execution:</strong> The complete workflow passed on Chrome and Edge.</li>
+<li><strong>Maven execution:</strong> Tests are repeatable through Maven.</li>
+</ul></section>
+
+<section><h2>9. Dynamic Test Data</h2>
+<p>The registration flow generates a unique email address using the current date and time.</p>
+<pre>Example:
+dineo_yyyyMMdd_HHmmss@test.com</pre></section>
+
+<section><h2>10. Cross-Browser Validation</h2>
+<table>
+<tr><th>Browser</th><th>Test Class</th><th>Result</th></tr>
+<tr><td>Google Chrome</td><td>EndToEndTest</td><td class="pass">PASS — 0 failures, 0 errors</td></tr>
+<tr><td>Microsoft Edge</td><td>EdgeEndToEndTest</td><td class="pass">PASS — 0 failures, 0 errors</td></tr>
+</table>
+<p>The Edge execution reuses the same end-to-end workflow while overriding the browser configuration, providing cross-browser coverage.</p>
+</section>
+
+<section><h2>11. Challenges and Solutions</h2>
+<table>
+<tr><th>Challenge</th><th>Solution</th></tr>
+<tr><td>Maintaining one continuous customer journey</td><td>Created a dedicated EndToEndTest that keeps registration, login, shopping and checkout in the same browser session.</td></tr>
+<tr><td>Dynamic registration data</td><td>Implemented timestamp-based unique email generation.</td></tr>
+<tr><td>Dynamic cart elements</td><td>Used product-specific XPath locators to identify cart rows and remove products reliably.</td></tr>
+<tr><td>Cross-browser execution</td><td>Added configurable browser setup in BaseTest and a dedicated Edge end-to-end test.</td></tr>
+<tr><td>Dynamic web elements</td><td>Applied explicit waits through reusable BasePage utilities.</td></tr>
+</table></section>
+
+<section><h2>12. Execution Evidence</h2>
+<pre>Chrome:
+Tests run: 1, Failures: 0, Errors: 0
+BUILD SUCCESS
+
+Edge:
+Tests run: 1, Failures: 0, Errors: 0
+BUILD SUCCESS</pre>
+<p class="note">Screenshots can be added later as visual evidence from the project execution. This report records the validated automated results and framework implementation.</p>
+</section>
+
+<section><h2>13. Final Result</h2>
+<table>
+<tr><th>Quality Check</th><th>Outcome</th></tr>
+<tr><td>Registration workflow</td><td class="pass">PASS</td></tr>
+<tr><td>Positive and negative login</td><td class="pass">PASS</td></tr>
+<tr><td>Product search and verification</td><td class="pass">PASS</td></tr>
+<tr><td>Shopping cart operations</td><td class="pass">PASS</td></tr>
+<tr><td>Checkout and order confirmation</td><td class="pass">PASS</td></tr>
+<tr><td>Account deletion</td><td class="pass">PASS</td></tr>
+<tr><td>Chrome execution</td><td class="pass">PASS</td></tr>
+<tr><td>Edge execution</td><td class="pass">PASS</td></tr>
+</table></section>
+
+<section><h2>14. Conclusion</h2>
+<p>The Automation Exercise E-Commerce project successfully demonstrates an end-to-end Selenium automation framework built with Java, TestNG and the Page Object Model. The final workflow validates the core customer journey from registration through purchasing and account deletion. Successful Chrome and Edge executions with zero failures and zero errors demonstrate repeatable functional and cross-browser automation coverage.</p>
+</section>
+
+<footer>Project 2 — Automation Exercise E-Commerce | Dineo Sephaka | Selenium Automation Portfolio Report</footer>
+</main></body></html>
