@@ -7,19 +7,22 @@ import com.dineo.automation.base.BasePage;
 
 public class HomePage extends BasePage {
 
-    private By signupLoginButton =
+    private final By signupLoginButton =
             By.xpath("//a[contains(text(),'Signup / Login')]");
 
-    private By productsButton =
+    private final By productsButton =
             By.xpath("//a[contains(text(),'Products')]");
 
-    private By cartButton =
+    private final By cartButton =
             By.xpath("//a[contains(text(),'Cart')]");
 
-    private By logoutButton =
+    private final By logoutButton =
             By.xpath("//a[contains(text(),'Logout')]");
 
-    private By loggedInUser =
+    private final By deleteAccountButton =
+            By.xpath("//a[contains(text(),'Delete Account')]");
+
+    private final By loggedInUser =
             By.xpath("//a[contains(.,'Logged in as')]");
 
     public HomePage(WebDriver driver) {
@@ -27,33 +30,36 @@ public class HomePage extends BasePage {
     }
 
     public LoginPage clickSignupLogin() {
-
         click(signupLoginButton);
-
         return new LoginPage(driver);
     }
 
     public ProductsPage clickProducts() {
-
-        click(productsButton);
-
+        driver.get("https://automationexercise.com/products");
         return new ProductsPage(driver);
     }
 
     public CartPage clickCart() {
-
         click(cartButton);
-
         return new CartPage(driver);
     }
 
     public void logout() {
-
         click(logoutButton);
     }
 
     public boolean isUserLoggedIn() {
-
         return isDisplayed(loggedInUser);
+    }
+
+    public AccountPage deleteAccount() {
+        click(deleteAccountButton);
+        return new AccountPage(driver);
+    }
+
+    public boolean isHomePageDisplayed() {
+        return driver.getCurrentUrl().equals(
+                "https://automationexercise.com/"
+        );
     }
 }

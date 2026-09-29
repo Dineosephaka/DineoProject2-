@@ -7,23 +7,38 @@ import com.dineo.automation.base.BasePage;
 
 public class ProductDetailsPage extends BasePage {
 
-    private By productName =
-            By.xpath("//div[@class='product-information']//h2");
+    private final By productName =
+            By.xpath("//div[contains(@class,'product-information')]//h2");
 
-    private By productPrice =
-            By.xpath("//div[@class='product-information']//span/span");
+    private final By productPrice =
+            By.xpath("//div[contains(@class,'product-information')]//span/span");
 
-    private By availability =
-            By.xpath("//div[@class='product-information']//p[contains(text(),'Availability')]");
+    private final By availability =
+            By.xpath("//div[contains(@class,'product-information')]//p[contains(normalize-space(.),'Availability:')]");
 
-    private By condition =
-            By.xpath("//div[@class='product-information']//p[contains(text(),'Condition')]");
+    private final By condition =
+            By.xpath("//div[contains(@class,'product-information')]//p[contains(normalize-space(.),'Condition:')]");
 
-    private By brand =
-            By.xpath("//div[@class='product-information']//p[contains(text(),'Brand')]");
+    private final By brand =
+            By.xpath("//div[contains(@class,'product-information')]//p[contains(normalize-space(.),'Brand:')]");
+
+    private final By addToCartButton =
+            By.cssSelector("button.btn.btn-default.cart");
+
+    private final By cartModal =
+            By.xpath("//div[contains(@class,'modal-content')]");
+
+    private final By continueShoppingButton =
+            By.xpath("//button[contains(text(),'Continue Shopping')]");
+
+    private final By viewCartLink =
+            By.xpath("//div[contains(@class,'modal-content')]//a[contains(@href,'/view_cart')]");
 
     public ProductDetailsPage(WebDriver driver) {
         super(driver);
+
+        // Wait for product details page to load
+        waitForElement(productName);
     }
 
     public String getProductName() {
@@ -44,5 +59,24 @@ public class ProductDetailsPage extends BasePage {
 
     public String getBrand() {
         return getText(brand);
+    }
+
+    public void addToCart() {
+        click(addToCartButton);
+        waitForElement(cartModal);
+    }
+
+    public ProductsPage continueShopping() {
+    click(continueShoppingButton);
+
+    wait.until(driver ->
+            driver.getCurrentUrl().contains("/products")
+    );
+
+    return new ProductsPage(driver);
+}
+    public CartPage viewCart() {
+        click(viewCartLink);
+        return new CartPage(driver);
     }
 }

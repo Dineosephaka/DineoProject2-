@@ -5,9 +5,26 @@
 <suite name="Dineo Automation Exercise Test Suite">
 
     <test name="E-Commerce Automation Tests">
-        <packages>
-            <package name="com.dineo.automation.tests"/>
-        </packages>
+
+        <classes>
+
+            <!-- 1. User Registration -->
+            <class name="com.dineo.automation.tests.RegisterTest"/>
+
+            <!-- 2. Login -->
+            <class name="com.dineo.automation.tests.LoginTest"/>
+
+            <!-- 3. Product Search -->
+            <class name="com.dineo.automation.tests.ProductTest"/>
+
+            <!-- 4. Shopping Cart -->
+            <class name="com.dineo.automation.tests.CartTest"/>
+
+            <!-- 5. Checkout -->
+            <class name="com.dineo.automation.tests.CheckoutTest"/>
+
+        </classes>
+
     </test>
 
 </suite>
